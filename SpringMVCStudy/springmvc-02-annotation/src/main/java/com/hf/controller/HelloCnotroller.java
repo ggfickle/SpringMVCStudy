@@ -12,4 +12,5 @@ public class HelloCnotroller {
         model.addAttribute("msg","hello Springmvc");
         return "hello";
     }
+
 }
