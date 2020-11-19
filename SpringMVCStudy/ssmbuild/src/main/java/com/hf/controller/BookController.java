@@ -1,5 +1,7 @@
 package com.hf.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hf.pojo.Books;
 import com.hf.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,12 @@ public class BookController {
     public String list(Model model) {
         List<Books> list = bookService.queryAllBook();
         model.addAttribute("list", list);
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            System.out.println(objectMapper.writeValueAsString(list));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
         return "allBook";
     }
 
